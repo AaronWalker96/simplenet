@@ -11,14 +11,16 @@ def loss():
 
 #Forward propagate through the network
 def forward():
-    global inputNode, w, output
-    output = inputNode * w
+    global inputNode, w0, w1, output
+    output = inputNode * w0 * w1
 
 #Backward propagation
 def backward():
-    global w, r, output, desiredOut, inputNode
-    #Adjust the weight 
-    w = w - (r *(inputNode*(2*(output - desiredOut))))
+    global w0, w1, r, output, desiredOut, inputNode, hiddenNode
+    #Adjust the weight for w0
+    w0 = w0 - (r*(hiddenNode*(2*(output - desiredOut))))
+    #Adjust the weight for w0
+    w1 = w1 - (r*(inputNode*(w0*(2*(output - desiredOut)))))
 
 #Train the network once
 def train():
@@ -28,17 +30,24 @@ def train():
 
 #Construct the network and populate nodes and weight,
 #do one forward propagation to initialize the output node
-desiredOut = 0.5
+desiredOut = 6
 r = 0.1
 inputNode = 1.5
-w = randomNum()
+hiddenNode = 0 
+w0 = randomNum()
+w1 = randomNum()
+
 output = 0
 forward() 
 
-for x in range(100): #Train the network 100 times
+print("Weight 0: " + str(w0))
+print("Weight 1: " + str(w1))
+
+for x in range(10000): #Train the network 100 times
     train()
     print(x)
-    print("Weight: " + str(w))
-    print("Output: " + str(output))
-    print("Loss:   " + str(C))
-    print("----------------------")
+    print("Weight 0: " + str(w0))
+    print("Weight 1: " + str(w1))
+    print("Output:   " + str(output))
+    print("Loss:     " + str(C))
+    print("-------------------------")
