@@ -43,7 +43,7 @@ forward()
 print("Weight 0: " + str(w0))
 print("Weight 1: " + str(w1))
 
-for x in range(10000): #Train the network 100 times
+for x in range(10000): #Train the network 10000 times
     train()
     print(x)
     print("Weight 0: " + str(w0))
