@@ -18,6 +18,14 @@ def forward():
     out3 = (inputNode03* w0) + (inputNode13 * w1)
 
 #Forward propagate through the network
+def forwardNew():
+    global w0, w1, out
+    out0 = (inputNode00* w0) + (inputNode10 * w1)
+    out1 = (inputNode01* w0) + (inputNode11 * w1)
+    out2 = (inputNode02* w0) + (inputNode12 * w1)
+    out3 = (inputNode03* w0) + (inputNode13 * w1)
+
+#Forward propagate through the network
 def predict(in1, in2):
     global w0, w1, outp
     outp = (in1* w0) + (in2 * w1)
@@ -57,6 +65,12 @@ def train():
 #Construct the network and populate nodes and weight,
 #do one forward propagation to initialize the output node
 r = 0.1
+
+inputNode = [0.09, 0.14, 0.10, 0.12]
+inputNode = [1.05, 1.14, 1.14, 1.30]
+desiredOut = [0.037, 0.022, 0.025, 0.026]
+out = [0, 0, 0, 0]
+
 inputNode00 = 0.09
 inputNode10 = 1.05
 desiredOut0 = 0.037
@@ -85,7 +99,7 @@ forward()
 print("Weight 0: " + str(w0))
 print("Weight 1: " + str(w1))
 
-for x in range(100000): #Train the network 1000 times
+for x in range(100000): #Train the network 100000 times
     train()
     print(x)
     print("Weight 0: " + str(w0))
