@@ -1,7 +1,6 @@
 # simplenet
 Quite possibly the simplest neural network you can build...
 
-<<<<<<< HEAD
 ## Structure - Predict Car Value
 The network has 2 nodes in the input layer and 1 node in the ouput layer. All connected by edges as shown here:
 
